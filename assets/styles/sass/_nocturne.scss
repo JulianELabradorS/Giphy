@@ -1,62 +1,84 @@
 .nocturne {
-	background-color: $nocturne-color;
-	& h1,
-	h2,
-	h3,
-	p,
-	a {
-		color: #fff;
-	}
-	#trending {
-		& > p {
-			color: #fff;
-		}
-	}
-	#trending__gifs {
-		background-color: $bold-nocturne-color;
-		#trending__gifs__slider {
-			&__next {
-				background-image: url('../../images/slider/button-slider-right-md-noct.svg');
-			}
-			&__prev {
-				background-image: url('../../images/slider/button-slider-left-md-noct.svg');
-			}
-		}
-	}
-	#main__input {
-		border: 1px solid #fff;
-		background-color: $nocturne-color;
-		color: #6b7989;
-	}
-	.header {
-		&__logo {
-			background-image: url('../../images/menu/Logo-modo-noc.svg');
-		}
-		&__container {
-			&__menu__line {
-				background-color: #fff;
-				&::after,
-				&::before {
-					background-color: #fff;
-				}
-			}
-			&__nav {
-				background-color: #000;
-				&__button {
-					background-image: url('../../images/menu/CTA-crar-gifo-modo-noc.svg');
-				}
-			}
-		}
-	}
+  background-color: $nocturne-color;
+  & h1,
+  h2,
+  h3,
+  p,
+  a {
+    color: #fff;
+  }
+  #trending {
+    & > p {
+      color: #fff;
+    }
+  }
+  #trending__gifs {
+    background-color: $bold-nocturne-color;
+    #trending__gifs__slider {
+      &__next {
+        background-image: url("../../images/slider/button-slider-right-md-noct.svg");
+        &:hover {
+          background-image: url("../../images/slider/Button-Slider-right-hover-noc.svg");
+        }
+      }
+      &__prev {
+        background-image: url("../../images/slider/button-slider-left-md-noct.svg");
+        &:hover {
+          background-image: url("../../images/slider/Button-Slider-left-hover-noc.svg");
+        }
+      }
+    }
+  }
+  #main {
+    .main__suggestBar {
+      background-color: $nocturne-color;
+      border-color: #fff;
+    }
+    &__input {
+      border: 1px solid #fff;
+      background-color: $nocturne-color;
+      color: #6b7989;
+      background-image: url("../../images/search/icon-search-modo-noct.svg");
+      &.active {
+        background-image: url("../../images/search/icon-search-modo-noct.svg"),
+          url("../../images/search/close-modo-noct.svg");
+        background-position: 3% center, 97% center;
+        color: #fff;
+      }
+    }
+  }
+  .header {
+    &__logo {
+      background-image: url("../../images/menu/Logo-modo-noc.svg");
+    }
+    &__container {
+      &__menu__line {
+        background-color: #fff;
+        &::after,
+        &::before {
+          background-color: #fff;
+        }
+      }
+      &__nav {
+        background-color: #000;
+        &__button {
+          background-image: url("../../images/menu/button-crear-gifo-noc.svg");
+          &:hover {
+            background-image: url("../../images/menu/CTA-crear-gifo-hover-modo-noc.svg");
+          }
+        }
+      }
+    }
+  }
 }
 @media only screen and (min-width: 768px) {
-	.nocturne {
-		.header {
-			&__container {
-				&__nav {
-					background-color: transparent;
-				}
-			}
-		}
-	}
+  .nocturne {
+    .header {
+      &__container {
+        &__nav {
+          background-color: transparent;
+        }
+      }
+    }
+  }
 }
