@@ -4,3 +4,16 @@
 .hide {
 	display: none !important;
 }
+.modal--show {
+	display: flex !important;
+}
+.show--flex {
+	display: flex !important;
+}
+.show--grid {
+	display: grid !important;
+}
+
+.active--button {
+	color: #9cafc3 !important;
+}

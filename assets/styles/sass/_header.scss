@@ -5,6 +5,7 @@
 		height: 48.8px;
 		background-image: url('../../images/menu/logo-desktop.svg');
 		background-size: cover;
+		cursor: pointer;
 	}
 	&__container {
 		padding: 34px 21px 17.2px;
@@ -86,8 +87,14 @@
 			&__list {
 				& li {
 					margin-bottom: 11px;
+
 					&:last-child {
 						margin-bottom: 0;
+					}
+					& a {
+						&:hover {
+							color: #9cafc3;
+						}
 					}
 				}
 				& hr {

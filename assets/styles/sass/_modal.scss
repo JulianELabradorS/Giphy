@@ -1,63 +1,85 @@
 .modal {
+	position: fixed;
 	display: none;
-	text-align: right;
-	padding: 59px 29px 0;
-	position: absolute;
 	top: 0;
 	width: 100%;
 	bottom: 0;
 	background-color: rgba(#fff, 0.9);
-	flex-direction: column;
-	align-items: flex-end;
+	justify-content: center;
+	align-items: center;
 	z-index: 100;
-
-	& img {
-		margin-bottom: 73px;
-		width: 24px;
-	}
-	&__card {
-		align-self: center;
-		&__image {
-			max-width: 318px;
-			height: 245px;
-			& img {
-				width: 100%;
-				height: 100%;
-			}
+	&__content {
+		max-width: 1440px;
+		flex: 1;
+		padding: 76px 29px;
+		display: flex;
+		flex-direction: column;
+		text-align: right;
+		position: relative;
+		& > img {
+			width: 24px;
+			position: absolute;
+			right: 21px;
+			top: 0;
 		}
-		&__info {
-			padding-top: 14px;
-			text-align: left;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			& img {
-				margin: 0;
-				width: 36px;
+		&__card {
+			align-self: center;
+			justify-self: center;
+			width: 100%;
+
+			&__image {
+				& img {
+					width: 100%;
+					height: 100%;
+				}
 			}
-			& h3 {
-				color: #000;
-			}
-			& p {
-				color: #000;
+			&__info {
+				padding-top: 14px;
+				text-align: left;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				&__images {
+					display: flex;
+
+					& img {
+						margin: 0;
+						width: 36px;
+						margin-right: 10px;
+						&:last-child {
+							margin-right: 0;
+						}
+					}
+				}
+				& h3 {
+					color: #000;
+				}
+				& p {
+					color: #000;
+				}
 			}
 		}
 	}
 }
-@media only screen and(min-width:768px) {
+@media only screen and (min-width: 768px) {
 	.modal {
-		padding: 66.4px 20% 0;
-		&__card {
-			width: 87%;
-			&__image {
-				max-width: initial;
-				width: 100%;
-				height: 385px;
+		&__content {
+			padding: 67px 268px;
+			& > img {
+				right: 278px;
 			}
-			&__info {
-				padding-top: 27px;
-				& img {
-					width: 27px;
+			&__card {
+				width: 695px;
+				&__image {
+					max-width: initial;
+					width: 100%;
+					height: 385px;
+				}
+				&__info {
+					padding-top: 27px;
+					& img {
+						width: 27px;
+					}
 				}
 			}
 		}
