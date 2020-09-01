@@ -116,6 +116,7 @@ const stopRecording = (recorder) => {
     videoContainer.load();
     videoContainer.classList.add('hide');
     let blob = recorder.getBlob();
+    console.log(blob);
     videoPrevContainer.classList.add('show');
     videoPrevContainer.src = URL.createObjectURL(blob);
     videoPrevContainer.play();
@@ -131,23 +132,13 @@ const stopRecording = (recorder) => {
 const uploadPetiton = async (blob) => {
   let form = new FormData();
   form.append('file', blob, 'mygif.gif');
-  let fileReader = new fileReader();
-  let binary;
-  fileReader.onload(() => {
-    binary = fileReader.result;
-  });
-  fileReader.readAsBinaryString(blob);
-  let response = await fetch(`https://upload.giphy.com/v1/gifs`, {
-    method: 'post',
-    headers: {
-      'Access-Control-Allow-Origin': 'http://127.0.0.1:5500/',
+
+  let response = await fetch(
+    `https://upload.giphy.com/v1/gifs?api_key=JQhP1sBxi7d1SKpBsMlFDJYPGUobpcpK`,
+    {
+      method: 'POST',
+      body: form,
     },
-    data: {
-      api_key: 'KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej',
-      file: binary,
-      username: ' Thispc',
-      tags: 'createdinhome',
-    },
-  });
+  );
   console.log(response);
 };
