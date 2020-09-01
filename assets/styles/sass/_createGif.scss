@@ -24,6 +24,9 @@
       & video {
         width: 100%;
         height: 100%;
+        &:last-child {
+          display: none;
+        }
       }
     }
     &__lines {
@@ -79,8 +82,20 @@
     display: flex;
     text-align: center;
     justify-content: center;
+    align-items: center;
     padding: 24px 0 19px;
     border-bottom: 3px solid $color-principal;
+    position: relative;
+    & #create__again {
+      display: none;
+      font-size: 13px;
+      color: $color-principal;
+      border-bottom: 2px solid $color-secondary;
+      line-height: 14px;
+      position: absolute;
+      right: 13%;
+      top: calc(50% - 8px);
+    }
     & #create__gif__controls-1 {
       width: 32px;
       line-height: 32px;
@@ -115,7 +130,8 @@
       }
     }
   }
-  &__button {
+
+  & .create__gif__button {
     width: 127px;
     height: 50px;
     border-radius: 25px;
@@ -132,24 +148,14 @@
     &:focus {
       outline: none;
     }
-  }
-  & #recording__gif__button {
-    display: none;
-    width: 127px;
-    height: 50px;
-    border-radius: 25px;
-    border: 1px solid $color-principal;
-    color: $color-principal;
-    position: absolute;
-    bottom: 23px;
-    left: calc(50% - 63.5px);
-    background-color: transparent;
-    &:hover {
-      background-color: $color-principal;
-      color: #fff;
+    &#recording__gif__button {
+      display: none;
     }
-    &:focus {
-      outline: none;
+    &#end__gif__button {
+      display: none;
+    }
+    &#upload__gif__button {
+      display: none;
     }
   }
 }

@@ -1047,6 +1047,10 @@ ul {
   height: 100%;
 }
 
+#create__gif .create__gif__content #create__gif__content__video video:last-child {
+  display: none;
+}
+
 #create__gif .create__gif__content__lines {
   width: 25px;
   height: 25px;
@@ -1114,8 +1118,23 @@ ul {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 24px 0 19px;
   border-bottom: 3px solid #572ee5;
+  position: relative;
+}
+
+#create__gif .create__gif__controls #create__again {
+  display: none;
+  font-size: 13px;
+  color: #572ee5;
+  border-bottom: 2px solid #50e3c2;
+  line-height: 14px;
+  position: absolute;
+  right: 13%;
+  top: calc(50% - 8px);
 }
 
 #create__gif .create__gif__controls #create__gif__controls-1 {
@@ -1156,7 +1175,7 @@ ul {
   color: #fff;
 }
 
-#create__gif__button {
+#create__gif .create__gif__button {
   width: 127px;
   height: 50px;
   border-radius: 25px;
@@ -1168,35 +1187,25 @@ ul {
   background-color: transparent;
 }
 
-#create__gif__button:hover {
+#create__gif .create__gif__button:hover {
   background-color: #572ee5;
   color: #fff;
 }
 
-#create__gif__button:focus {
+#create__gif .create__gif__button:focus {
   outline: none;
 }
 
-#create__gif #recording__gif__button {
+#create__gif .create__gif__button#recording__gif__button {
   display: none;
-  width: 127px;
-  height: 50px;
-  border-radius: 25px;
-  border: 1px solid #572ee5;
-  color: #572ee5;
-  position: absolute;
-  bottom: 23px;
-  left: calc(50% - 63.5px);
-  background-color: transparent;
 }
 
-#create__gif #recording__gif__button:hover {
-  background-color: #572ee5;
-  color: #fff;
+#create__gif .create__gif__button#end__gif__button {
+  display: none;
 }
 
-#create__gif #recording__gif__button:focus {
-  outline: none;
+#create__gif .create__gif__button#upload__gif__button {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -1407,22 +1416,12 @@ ul {
   color: #000;
 }
 
-.nocturne #create__gif__button {
+.nocturne #create__gif .create__gif__button {
   border: 1px solid #fff;
   color: #fff;
 }
 
-.nocturne #create__gif__button:hover {
-  background-color: #fff;
-  color: #000;
-}
-
-.nocturne #create__gif #recording__gif__button {
-  border: 1px solid #fff;
-  color: #fff;
-}
-
-.nocturne #create__gif #recording__gif__button:hover {
+.nocturne #create__gif .create__gif__button:hover {
   background-color: #fff;
   color: #000;
 }

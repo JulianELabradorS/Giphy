@@ -15,12 +15,17 @@ const showMyGifos = () => {
   } else if (createContainer.classList.length) {
     createContainer.classList.remove('show--flex');
     headerCreateButton.classList.remove('active');
+    stopCamera();
   } else {
     sectionPrincipal.classList.add('hide');
   }
-  revokepermissions();
 };
-const revokepermissions = async () => {
-  const videoPermision = await navigator.permissions.query({ name: 'camera' });
-  console.log(videoPermision);
+const stopCamera = async () => {
+  /*   let stream = videoContainer.srcObject;
+  console.log(stream);
+  let x = stream.getTracks();
+  x[0].stop();
+  videoContainer.pause();
+  videoContainer.removeAttribute('src');
+  videoContainer.load(); */
 };
