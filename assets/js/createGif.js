@@ -65,10 +65,7 @@ const initVideo = () => {
     navigator.mediaDevices
       .getUserMedia({
         audio: false,
-        video: {
-          width: 646,
-          height: 348,
-        },
+        video: true,
       })
       .then((stream) => {
         controlerButton1.classList.remove('active');
@@ -97,7 +94,11 @@ const recordingVideo = async () => {
   buttonEndVideo.classList.add('show');
   let stream = videoContainer.srcObject;
   let recorder = RecordRTC(stream, {
-    type: 'video',
+    type: 'gif',
+    frameRate: 1,
+    quality: 10,
+    width: 360,
+    hidden: 240,
   });
   recorder.startRecording();
   buttonEndVideo.addEventListener('click', () => {
@@ -110,12 +111,12 @@ const stopRecording = (recorder) => {
   buttonCreateAgain.classList.add('show');
   let stream = videoContainer.srcObject;
   recorder.stopRecording(function () {
+    let blob = recorder.getBlob();
     let tracks = stream.getTracks();
     tracks[0].stop();
     videoContainer.removeAttribute('src');
     videoContainer.load();
     videoContainer.classList.add('hide');
-    let blob = recorder.getBlob();
     console.log(blob);
     videoPrevContainer.classList.add('show');
     videoPrevContainer.src = URL.createObjectURL(blob);
@@ -132,13 +133,17 @@ const stopRecording = (recorder) => {
 const uploadPetiton = async (blob) => {
   let form = new FormData();
   form.append('file', blob, 'mygif.gif');
-
   let response = await fetch(
-    `https://upload.giphy.com/v1/gifs?api_key=JQhP1sBxi7d1SKpBsMlFDJYPGUobpcpK`,
+    'https://upload.giphy.com/v1/gifs?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe',
     {
+      /*  headers:{
+        Access-Control-Allow-Origin:null
+      }, */
       method: 'POST',
       body: form,
     },
   );
-  console.log(response);
+  response.json().then((data) => {
+    console.log(data);
+  });
 };
