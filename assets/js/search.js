@@ -12,117 +12,117 @@ let suggest;
 let limit = 12;
 //EVENTS LISTENERS
 form.addEventListener('submit', () => {
-  submit();
+	submit();
 });
 input.addEventListener('input', () => {
-  suggestPetition();
+	suggestPetition();
 });
 input.addEventListener('click', () => {
-  hideSuggertBar();
+	hideSuggertBar();
 });
 button.addEventListener('click', () => {
-  searchMore();
+	searchMore();
 });
 
 //SUGGEST PETITION
 const suggestPetition = async () => {
-  let value = event.target.value;
-
-  if (value) {
-    let response = await fetch(
-      `https://api.giphy.com/v1/tags/related/${value}?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`,
-    );
-    let suggestions = await response.json();
-    const { data } = suggestions;
-    renderSuggestions(data);
-  } else {
-    suggestBar.classList.remove('show');
-    input.classList.remove('active');
-  }
+	let value = event.target.value;
+	if (value) {
+		let response = await fetch(
+			`https://api.giphy.com/v1/tags/related/${value}?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`
+		);
+		let suggestions = await response.json();
+		const { data } = suggestions;
+		renderSuggestions(data);
+	} else {
+		suggestBar.classList.remove('show');
+		input.classList.remove('active');
+	}
 };
 //HIDDE SUGGEST BAR
 const hideSuggertBar = () => {
-  suggestBar.classList.remove('show');
-  input.classList.remove('active');
+	suggestBar.classList.remove('show');
+	input.classList.remove('active');
 };
 //RENDER SUGGESTIONS
 const renderSuggestions = (suggestions) => {
-  suggestList.innerHTML = '';
-  suggestions.forEach((suggest) => {
-    const { name } = suggest;
-    let template = `<li>
+	suggestList.innerHTML = '';
+	suggestions.forEach((suggest) => {
+		const { name } = suggest;
+		let template = `<li>
   <a href="" data-suggest="${name}"><img src="./assets/images/search/icon-search-modo-noct.svg" alt="" />${name}</a>
 </li> `;
-    suggestList.insertAdjacentHTML('beforeend', template);
-  });
-  suggestBar.classList.add('show');
-  input.classList.add('active');
-  //SUGGESTION LISTENER
-  suggest = suggestList.querySelectorAll('a');
-  suggest.forEach((data) => {
-    data.addEventListener('click', () => {
-      throwSearch();
-    });
-  });
+		suggestList.insertAdjacentHTML('beforeend', template);
+	});
+	suggestBar.classList.add('show');
+	input.classList.add('active');
+	//SUGGESTION LISTENER
+	suggest = suggestList.querySelectorAll('a');
+	suggest.forEach((data) => {
+		data.addEventListener('click', () => {
+			throwSearch();
+		});
+	});
 };
 //TROW SUBMIT ON CLICK
 const throwSearch = () => {
-  event.preventDefault();
-  let button = event.target;
-  let value = button.dataset.suggest;
-  input.value = value;
-  suggestBar.classList.remove('show');
-  input.classList.remove('active');
-  submit();
+	console.log(event.target.innerHTML);
+	event.preventDefault();
+	let button = event.target;
+	let value = button.dataset.suggest;
+	input.value = value;
+	suggestBar.classList.remove('show');
+	input.classList.remove('active');
+	submit();
 };
 //SUBMIT
 const submit = () => {
-  event.preventDefault();
-  hideSuggertBar();
-  gifsContainer.innerHTML = '';
-  let value = input.value;
-  let title = `${value}`.toUpperCase();
-  title.textContent = title;
-  fetch(
-    `https://api.giphy.com/v1/gifs/search?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej&q=${value}&limit=${limit}`,
-  ).then((response) => {
-    response.json().then((gifs) => {
-      const { data } = gifs;
-      if (allGifs.length > allGifsLimit) {
-        cleanAllGifs();
-      }
-      if (data.length) {
-        renderGifs(data);
-      } else {
-        showNoResults();
-      }
-    });
-  });
+	event.preventDefault();
+	hideSuggertBar();
+	gifsContainer.innerHTML = '';
+	let value = input.value;
+	let title = `${value}`.toUpperCase();
+	title.textContent = title;
+	fetch(`https://api.giphy.com/v1/gifs/search?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej&q=${value}&limit=${limit}`).then(
+		(response) => {
+			response.json().then((gifs) => {
+				const { data } = gifs;
+				if (allGifs.length > allGifsLimit) {
+					cleanAllGifs();
+				}
+				if (data.length) {
+					renderGifs(data);
+				} else {
+					showNoResults();
+				}
+			});
+		}
+	);
 };
 const cleanAllGifs = () => {
-  allGifs.splice(25);
-  limit = 12;
+	allGifs.splice(25);
+	limit = 12;
 };
 const showNoResults = () => {
-  noResultsContainer.classList.add('show');
-  container.classList.add('show');
-  button.classList.add('hide');
+	noResultsContainer.classList.add('show');
+	container.classList.add('show');
+	button.classList.add('hide');
 };
 const renderGifs = (gifs) => {
-  noResultsContainer.classList.remove('show');
-  trendingText.classList.add('hide');
-  button.classList.remove('hide');
-  gifs.forEach((gif) => {
-    const {
-      images: {
-        downsized: { url },
-        preview_gif: { url: preview },
-      },
-      id,
-      title,
-      username,
-    } = gif;
-    let template = ` 		<div class="searchResults__gifs__gif">
+	noResultsContainer.classList.remove('show');
+	trendingText.classList.add('hide');
+	button.classList.remove('hide');
+	gifs.forEach((gif) => {
+		const {
+			images: {
+				downsized: { url },
+				preview_gif: { url: preview },
+			},
+			id,
+			title,
+			username,
+		} = gif;
+		let template = ` 		<div class="searchResults__gifs__gif">
             <img
                 src="${preview}"
 				alt=""
@@ -134,13 +134,13 @@ const renderGifs = (gifs) => {
                 <img src="./assets/images/gifIcons/icon-max-hover.svg" alt="" onclick="searchGif('${id}')" class="max__icon"/>
             </div>
         </div>`;
-    gifsContainer.insertAdjacentHTML('beforeend', template);
-    new Gif(url, preview, id, title, username);
-  });
-  container.classList.add('show');
+		gifsContainer.insertAdjacentHTML('beforeend', template);
+		new Gif(url, preview, id, title, username);
+	});
+	container.classList.add('show');
 };
 
 const searchMore = () => {
-  limit += 12;
-  submit();
+	limit += 12;
+	submit();
 };
