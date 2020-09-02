@@ -1,5 +1,8 @@
 let headerMyGifosButton = document.getElementById('header__myGifos__button');
 let myGifosContainer = document.getElementById('myGifos');
+let myGifosResultsContainer = document.getElementById('myGifos__results__gifs');
+let myGifosResults = document.getElementById('myGifos__results');
+let myGifosNoResults = document.getElementById('myGifos__noContent');
 
 headerMyGifosButton.addEventListener('click', () => {
   showMyGifos();
@@ -19,13 +22,42 @@ const showMyGifos = () => {
   } else {
     sectionPrincipal.classList.add('hide');
   }
+
+  renderMyGifos();
 };
-const stopCamera = async () => {
-  /*   let stream = videoContainer.srcObject;
-  console.log(stream);
-  let x = stream.getTracks();
-  x[0].stop();
-  videoContainer.pause();
-  videoContainer.removeAttribute('src');
-  videoContainer.load(); */
+const renderMyGifos = () => {
+  myGifosResultsContainer.innerHTML = '';
+
+  let filter = allGifs.filter((gif) => {
+    return gif.created === true;
+  });
+  filter.forEach((gif) => {
+    console.log(gif);
+    const { preview, image, id, title } = gif;
+    let template = ` <div class="myGifos__results__gifs__gif">
+    <img src="${preview}" alt="" onclick="searchGif('${id}')" />
+    <div class="myGifos__results__gifs__gif__hover">
+    <img src="./assets/images/gifIcons/icon-fav-hover.svg" alt=""  onclick="addFavorite('${id}')" class="fav__icon" />
+      <img
+        src="./assets/images/gifIcons/icon-download-hover.svg"
+        alt=""
+        onclick="downloadGif('${image}','${title}')"
+        class="download__icon"
+      />
+      <img
+        src="./assets/images/gifIcons/icon-max-hover.svg"
+        alt=""
+        onclick="searchGif('${id}')"
+        class="max__icon"
+      />
+    </div>
+  </div>`;
+    myGifosResultsContainer.insertAdjacentHTML('beforeend', template);
+  });
+  if (myGifosResultsContainer.hasChildNodes()) {
+    myGifosResults.classList.add('show');
+    myGifosNoResults.classList.add('hide');
+  }
+  window.localStorage.setItem('myGifos', JSON.stringify(filter));
 };
+const stopCamera = async () => {};

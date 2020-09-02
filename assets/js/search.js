@@ -30,7 +30,7 @@ const suggestPetition = async () => {
 
   if (value) {
     let response = await fetch(
-      `https://api.giphy.com/v1/tags/related/${value}?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe`,
+      `https://api.giphy.com/v1/tags/related/${value}?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`,
     );
     let suggestions = await response.json();
     const { data } = suggestions;
@@ -84,7 +84,7 @@ const submit = () => {
   let title = `${value}`.toUpperCase();
   title.textContent = title;
   fetch(
-    `https://api.giphy.com/v1/gifs/search?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe&q=${value}&limit=${limit}`,
+    `https://api.giphy.com/v1/gifs/search?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej&q=${value}&limit=${limit}`,
   ).then((response) => {
     response.json().then((gifs) => {
       const { data } = gifs;

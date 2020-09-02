@@ -1018,6 +1018,9 @@ ul {
   margin: 0 auto;
   position: relative;
   display: none;
+  background-image: url(/assets/images/createIcons/camara.svg), url(/assets/images/createIcons/element-luz-camara.svg);
+  background-repeat: no-repeat;
+  background-position: 5% 40%, 13.6% 41.5%;
 }
 
 #create__gif .create__gif__content {
@@ -1042,13 +1045,64 @@ ul {
   bottom: 20px;
 }
 
+#create__gif .create__gif__content #create__gif__content__video__hover {
+  display: none;
+  position: absolute;
+  background-color: rgba(87, 46, 229, 0.6);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#create__gif .create__gif__content #create__gif__content__video__hover #image__icon__hover {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+#create__gif .create__gif__content #create__gif__content__video__hover #text__icon__hover {
+  color: #fff;
+  margin-top: 10px;
+}
+
+#create__gif .create__gif__content #create__gif__content__video__hover .icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+#create__gif .create__gif__content #create__gif__content__video__hover .icons img {
+  display: block;
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+#create__gif .create__gif__content #create__gif__content__video__hover .icons img:hover {
+  opacity: 1;
+}
+
 #create__gif .create__gif__content #create__gif__content__video video {
   width: 100%;
   height: 100%;
 }
 
-#create__gif .create__gif__content #create__gif__content__video video:last-child {
+#create__gif .create__gif__content #create__gif__content__video img {
   display: none;
+  width: 100%;
+  height: 100%;
 }
 
 #create__gif .create__gif__content__lines {
@@ -1133,7 +1187,7 @@ ul {
   border-bottom: 2px solid #50e3c2;
   line-height: 14px;
   position: absolute;
-  right: 13%;
+  right: 10%;
   top: calc(50% - 8px);
 }
 

@@ -11,6 +11,8 @@ let videoPrevContainer = document.getElementById('preview__video');
 let controlerButton1 = document.getElementById('create__gif__controls-1');
 let controlerButton2 = document.getElementById('create__gif__controls-2');
 let controlerButton3 = document.getElementById('create__gif__controls-3');
+let uploadHover = document.getElementById('create__gif__content__video__hover');
+let myGifos = [];
 
 headerCreateButton.addEventListener('click', () => {
   showCreate();
@@ -28,7 +30,9 @@ buttonCreateAgain.addEventListener('click', () => {
 const showCreate = () => {
   event.preventDefault();
   textCreateGif.innerHTML = '';
+  controlerButton3.classList.remove('active');
   videoPrevContainer.classList.remove('show');
+  uploadHover.classList.remove('show--flex');
   videoContainer.classList.remove('hide');
   buttonuploadVideo.classList.remove('show');
   buttonCreateAgain.classList.remove('show');
@@ -120,10 +124,6 @@ const stopRecording = (recorder) => {
     console.log(blob);
     videoPrevContainer.classList.add('show');
     videoPrevContainer.src = URL.createObjectURL(blob);
-    videoPrevContainer.play();
-    videoPrevContainer.addEventListener('ended', () => {
-      videoPrevContainer.play();
-    });
     buttonuploadVideo.addEventListener('click', () => {
       uploadPetiton(blob);
     });
@@ -131,19 +131,56 @@ const stopRecording = (recorder) => {
 };
 
 const uploadPetiton = async (blob) => {
+  buttonuploadVideo.classList.remove('show');
+  buttonCreateAgain.classList.remove('show');
+  controlerButton2.classList.remove('active');
+  controlerButton3.classList.add('active');
+  uploadHover.innerHTML = '';
+  let template = ` <img src="./assets/images/createIcons/loader.svg" alt="upload Gif icon" id="image__icon__hover" >
+  <p id="text__icon__hover">Estamos subiendo tu GIFO</p>`;
+  uploadHover.insertAdjacentHTML('beforeend', template);
+  uploadHover.classList.add('show--flex');
   let form = new FormData();
   form.append('file', blob, 'mygif.gif');
   let response = await fetch(
-    'https://upload.giphy.com/v1/gifs?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe',
+    'https://upload.giphy.com/v1/gifs?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej',
     {
-      /*  headers:{
-        Access-Control-Allow-Origin:null
-      }, */
       method: 'POST',
       body: form,
     },
   );
-  response.json().then((data) => {
-    console.log(data);
-  });
+  response
+    .json()
+    .then((data) => {
+      const {
+        data: { id },
+      } = data;
+      getCreated(id);
+    })
+    .catch((e) => {
+      alert('UPS!! Tenemos problemas con nuestros servidores');
+    });
+};
+const getCreated = async (id) => {
+  let response = await fetch(
+    `https://api.giphy.com/v1/gifs/${id}?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`,
+  );
+  let data = await response.json();
+  const { data: gif } = data;
+  console.log('here', gif);
+  const {
+    title,
+    username,
+    images: {
+      downsized: { url },
+    },
+  } = gif;
+  new Gif(url, url, id, title, username, false, true);
+  uploadHover.innerHTML = '';
+  let template = ` <div class="icons">
+  <img src="./assets/images/gifIcons/icon-download-hover.svg" alt="add to favorites icon" onclick="downloadGif('${url}','${title}')">
+  <img src="./assets/images/gifIcons/icon-link-hover.svg" alt="link gif Icon">
+</div><img src="./assets/images/createIcons/check.svg" alt="upload Gif icon" id="image__icon__hover" >
+  <p id="text__icon__hover">GIFO subido con éxito</p>`;
+  uploadHover.insertAdjacentHTML('beforeend', template);
 };

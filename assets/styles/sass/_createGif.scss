@@ -7,6 +7,10 @@
   margin: 0 auto;
   position: relative;
   display: none;
+  background-image: url(/assets/images/createIcons/camara.svg),
+    url(/assets/images/createIcons/element-luz-camara.svg);
+  background-repeat: no-repeat;
+  background-position: 5% 40%, 13.6% 41.5%;
   & .create__gif__content {
     position: relative;
     padding: 20px;
@@ -21,12 +25,48 @@
       right: 20px;
       left: 20px;
       bottom: 20px;
+      &__hover {
+        display: none;
+        position: absolute;
+        background-color: rgba($color-principal, 0.6);
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        width: 100%;
+        bottom: 0;
+        flex-direction: column;
+        & #image__icon__hover {
+          display: block;
+          width: 22px;
+          height: 22px;
+        }
+        & #text__icon__hover {
+          color: #fff;
+          margin-top: 10px;
+        }
+        & .icons {
+          display: flex;
+          position: absolute;
+          top: 10px;
+          right: 0;
+          & img {
+            display: block;
+            margin-right: 10px;
+            opacity: 0.6;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
       & video {
         width: 100%;
         height: 100%;
-        &:last-child {
-          display: none;
-        }
+      }
+      & img {
+        display: none;
+        width: 100%;
+        height: 100%;
       }
     }
     &__lines {
@@ -93,7 +133,7 @@
       border-bottom: 2px solid $color-secondary;
       line-height: 14px;
       position: absolute;
-      right: 13%;
+      right: 10%;
       top: calc(50% - 8px);
     }
     & #create__gif__controls-1 {

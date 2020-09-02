@@ -65,7 +65,7 @@ const getMovement = () => {
 
 const petitionTrendings = () => {
   fetch(
-    `https://api.giphy.com/v1/trending/searches?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe`,
+    `https://api.giphy.com/v1/trending/searches?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`,
   ).then((response) => {
     response.json().then((trendings) => {
       const { data } = trendings;
@@ -82,7 +82,7 @@ const renderTrendingsStr = (trendings) => {
 };
 const petitionTrendingGifs = async () => {
   let response = await fetch(
-    `https://api.giphy.com/v1/gifs/trending?api_key=APOUKP9u6BaOSLAVuA3AoRygic9iIIIe`,
+    `https://api.giphy.com/v1/gifs/trending?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej`,
   );
   let trendings = await response.json();
   const { data } = trendings;
