@@ -6,7 +6,7 @@ let gifsContainer = document.getElementById('searchResults__gifs');
 let noResultsContainer = document.getElementById('searchResults__no');
 let container = document.getElementById('searchResults');
 let trendingText = document.getElementById('trending');
-let title = document.getElementById('searchResults__title');
+let Searchtitle = document.getElementById('searchResults__title');
 let button = document.getElementById('searchResults__button');
 let suggest;
 let limit = 12;
@@ -82,7 +82,8 @@ const submit = () => {
 	gifsContainer.innerHTML = '';
 	let value = input.value;
 	let title = `${value}`.toUpperCase();
-	title.textContent = title;
+	Searchtitle.innerHTML = '';
+	Searchtitle.textContent = title;
 	fetch(`https://api.giphy.com/v1/gifs/search?api_key=KxvZAKM0KrymQwsG3ocqEsjRw6PRyNej&q=${value}&limit=${limit}`).then(
 		(response) => {
 			response.json().then((gifs) => {
@@ -129,9 +130,9 @@ const renderGifs = (gifs) => {
 				onclick="searchGif('${id}')"
             />
             <div class="searchResults__gifs__gif__hover">
-                <img src="./assets/images/gifIcons/icon-fav-hover.svg" alt=""  onclick="addFavorite('${id}')" class="fav__icon" />
-                <img src="./assets/images/gifIcons/icon-download-hover.svg" alt="" onclick="downloadGif('${url}','${title}')"  class="download__icon"/>
-                <img src="./assets/images/gifIcons/icon-max-hover.svg" alt="" onclick="searchGif('${id}')" class="max__icon"/>
+                <img src="./assets/images/gifIcons/icon-fav-hover.svg" alt="icono agregar a favorito"  onclick="addFavorite('${id}')" class="fav__icon" />
+                <img src="./assets/images/gifIcons/icon-download-hover.svg" alt="icono descargar gif" onclick="downloadGif('${url}','${title}')"  class="download__icon"/>
+                <img src="./assets/images/gifIcons/icon-max-hover.svg" alt="icono maximixar gif" onclick="searchGif('${id}')" class="max__icon"/>
             </div>
         </div>`;
 		gifsContainer.insertAdjacentHTML('beforeend', template);

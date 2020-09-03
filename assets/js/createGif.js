@@ -1,4 +1,5 @@
 let headerCreateButton = document.getElementById('header__button__create');
+let listCreateButton = document.getElementById('list__create__button');
 let buttonInitVideo = document.getElementById('create__gif__button');
 let buttonRecordingVideo = document.getElementById('recording__gif__button');
 let buttonEndVideo = document.getElementById('end__gif__button');
@@ -15,6 +16,9 @@ let uploadHover = document.getElementById('create__gif__content__video__hover');
 let myGifos = [];
 
 headerCreateButton.addEventListener('click', () => {
+	showCreate();
+});
+listCreateButton.addEventListener('click', () => {
 	showCreate();
 });
 buttonRecordingVideo.addEventListener('click', () => {
