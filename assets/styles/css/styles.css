@@ -201,24 +201,20 @@ ul {
   margin-bottom: 11px;
 }
 
+.header__container__nav__list li:nth-child(even) {
+  height: 1px;
+  width: 50px;
+  border: #fff 1px solid;
+  opacity: 0.5;
+  display: inline-block;
+}
+
 .header__container__nav__list li:last-child {
   margin-bottom: 0;
 }
 
 .header__container__nav__list li a:hover {
   color: #9cafc3;
-}
-
-.header__container__nav__list hr {
-  margin-bottom: 11px;
-  width: 41px;
-  border-color: #fff;
-  opacity: 0.5;
-  display: inline-block;
-}
-
-.header__container__nav__list hr:last-child {
-  margin-bottom: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -268,6 +264,12 @@ ul {
     margin: 0;
     -ms-flex-negative: 0;
         flex-shrink: 0;
+  }
+  .header__container__nav__list li:nth-child(even) {
+    display: none;
+  }
+  .header__container__nav__list li:last-child {
+    display: none;
   }
   .header__container__nav__list hr {
     display: none;
@@ -1020,7 +1022,8 @@ ul {
   display: none;
   background-image: url(../../images/createIcons/camara.svg), url(../../images/createIcons/element-luz-camara.svg), url(../../images/createIcons/pelicula.svg);
   background-repeat: no-repeat;
-  background-position: 5% 40%, 13.6% 41.5%, 87% 75%;
+  background-position: 33px 182px, 156px 202px, 85% 1%;
+  background-attachment: local;
 }
 
 #create__gif .create__gif__content {
@@ -1263,6 +1266,9 @@ ul {
 }
 
 @media screen and (min-width: 768px) {
+  #create__gif {
+    background-position: 132px 182px, 256px 200px, 83% 77%;
+  }
   #create__gif .create__gif__content {
     width: 688px;
     height: 390px;
@@ -1480,6 +1486,16 @@ ul {
 }
 
 .nocturne #create__gif .create__gif__button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.nocturne #favorites__results__button {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.nocturne #favorites__results__button:hover {
   background-color: #fff;
   color: #000;
 }

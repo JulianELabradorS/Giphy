@@ -30,7 +30,7 @@ const maximixeGif = (gif) => {
                 <h3>${title}</h3>
             </div>
             <div class="modal__content__card__info__images">
-                <img src="${src}" class="fav__icon" onclick="addFavorite('${id}')"/>
+                <img src="${src}" class="fav__icon" onclick="addFavorite('${id}')" alt="icono agregar a favoritos"/>
                 <img
                     src="./assets/images/gifIcons/icon-download-hover.svg"
                     alt="icono de descarga"

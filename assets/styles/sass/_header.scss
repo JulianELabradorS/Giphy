@@ -87,6 +87,13 @@
 			&__list {
 				& li {
 					margin-bottom: 11px;
+					&:nth-child(even) {
+						height: 1px;
+						width: 50px;
+						border: #fff 1px solid;
+						opacity: 0.5;
+						display: inline-block;
+					}
 
 					&:last-child {
 						margin-bottom: 0;
@@ -95,16 +102,6 @@
 						&:hover {
 							color: #9cafc3;
 						}
-					}
-				}
-				& hr {
-					margin-bottom: 11px;
-					width: 41px;
-					border-color: #fff;
-					opacity: 0.5;
-					display: inline-block;
-					&:last-child {
-						margin-bottom: 0;
 					}
 				}
 			}
@@ -145,6 +142,12 @@
 					& li {
 						margin: 0;
 						flex-shrink: 0;
+						&:nth-child(even) {
+							display: none;
+						}
+						&:last-child {
+							display: none;
+						}
 					}
 					& hr {
 						display: none;
