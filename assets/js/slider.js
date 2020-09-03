@@ -85,7 +85,6 @@ const petitionTrendingGifs = async () => {
 	renderTrendings(data);
 };
 const renderTrendings = (trendings) => {
-	console.log(trendings);
 	trendings.forEach((trending) => {
 		const {
 			images: {

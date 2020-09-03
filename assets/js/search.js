@@ -66,7 +66,6 @@ const renderSuggestions = (suggestions) => {
 };
 //TROW SUBMIT ON CLICK
 const throwSearch = () => {
-	console.log(event.target.innerHTML);
 	event.preventDefault();
 	let button = event.target;
 	let value = button.dataset.suggest;

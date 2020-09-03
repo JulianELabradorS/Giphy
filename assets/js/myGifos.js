@@ -32,7 +32,6 @@ const renderMyGifos = () => {
 		return gif.created === true;
 	});
 	filter.forEach((gif) => {
-		console.log(gif);
 		const { preview, image, id, title } = gif;
 		let template = ` <div class="myGifos__results__gifs__gif">
     <img src="${preview}" alt="${title}" onclick="searchGif('${id}')" />

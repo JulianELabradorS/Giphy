@@ -118,6 +118,18 @@
 			}
 		}
 	}
+	#favorites {
+		&__results {
+			&__button {
+				border: 1px solid #fff;
+				color: #fff;
+				&:hover {
+					background-color: #fff;
+					color: #000;
+				}
+			}
+		}
+	}
 }
 @media only screen and (min-width: 768px) {
 	.nocturne {

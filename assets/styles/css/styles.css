@@ -1490,6 +1490,16 @@ ul {
   color: #000;
 }
 
+.nocturne #favorites__results__button {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.nocturne #favorites__results__button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
 @media only screen and (min-width: 768px) {
   .nocturne .header__container__nav {
     background-color: transparent;

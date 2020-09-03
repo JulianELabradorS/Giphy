@@ -41,7 +41,6 @@ const hasFavorites = () => {
 };
 
 const handleClick = () => {
-	console.log(favoritesLimit);
 	favoritesLimit += 8;
 	renderFavorites();
 };
